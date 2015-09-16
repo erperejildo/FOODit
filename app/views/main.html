@@ -1,0 +1,24 @@
+<div id="restaurant-name">Your Delicious Restaurant</div>
+
+<ul class="meals">
+    <li class="meal" ng-repeat="meal in menu.meals">
+        <!-- Info with image and name -->
+        <div class="top-info">
+              <p class="price">{{meal.price | currency:'£'}}</p>
+              <img class="image" ng-src="{{meal.primaryImageUrl}}">
+              <h4 class="name">{{meal.name}}</h4>
+        </div>
+        <!-- Other meal info -->
+        <div class="bot-info">
+          <div class="info">
+            <div class="balls">
+                <image class="ball" ng-repeat="tag in meal.tags" ng-src="images/tag--{{tag}}.svg" fallback-src="" />
+            </div>
+            <p class="description">{{meal.description || 'Enjoy it!' }}</p>
+            <div class="add" ng-click="addToBasket(meal)">Add To Your Order</div>
+            <!-- I don't know from where I get this -->
+            <p class="options">3 options available</div>
+          </div>
+        </div>
+    </li>
+</ul>

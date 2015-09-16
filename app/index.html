@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="jstestApp" ng-cloak>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container">
+      <div class="header" data="header" ng-controller="HeaderCtrl" ng-class="{'open-header':open}" ng-click="openHeader($event)">
+        <h3 class="text-muted" ng-hide="basket">It's time to order some delicious food</h3>
+        <div class="h-100" ng-show="basket">
+
+            <div class="top" ng-class="{'bottom':open}">
+                <div class="meal-box" ng-hide="open" ng-if="main > 0">{{main}} main<span ng-if="main > 1">s</span></div>
+                <div class="meal-box" ng-hide="open" ng-if="other > 0">{{other}} other<span ng-if="other > 1">s</span></div>
+                <div id="confirm-order" ng-show="open">Confirm Your Order</div>
+                <div id="total-price">&#163;{{totalPrice}}</div>
+            </div>
+
+            <div id="hide-basket" ng-show="open">
+                <div id="close" ng-click="open = false">&#215;</div>
+                <h3>Your Order</h3>
+                <h4>A Delicious Restaurant</h4>
+                <div id="meals">
+
+                    <div class="meal-content" ng-repeat="meal in basket | orderBy:'type'">
+                        <div class="my-meal">
+                            <div class="addRemove">
+                                <ul>
+                                    <li class="red" ng-click="addMeal(meal)">&#43;</li>
+                                    <li>{{meal.orders}}</li>
+                                    <li class="red" ng-click="removeMeal(meal)">&#8722;</li>
+                            </div>
+                            <div class="content-meal">
+                                <!-- Show the type of menu -->
+                                <span class="type">{{meal.type}}</span>
+                                <span class="left">{{meal.name}}</span><span class="right">&#163;{{meal.price}}</span>
+                                <!-- I don't know from where I get the extras -->
+                                <!--span class="red">- no chilli</span-->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+      </div>
+
+      <div ng-view="" id="view"></div>
+
+      <div class="footer">
+        <p><span class="glyphicon glyphicon-heart"></span> from FOODit and the Yeoman team.</p>
+      </div>
+    </div>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/services/menuservice.js"></script>
+        <script src="scripts/services/basketfactory.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
