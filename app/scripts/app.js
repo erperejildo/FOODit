@@ -27,12 +27,12 @@ angular
         redirectTo: '/'
       });
   })
-  // I understand that each image have a tag and there are problems in the json with the names (that I can't modificate)
+  // I understand that each image have a tag and there are problems in the json with the names (and I can't modificate it)
   .directive('fallbackSrc', function() {
     var fallbackSrc = {
       link: function postLink(scope, iElement, iAttrs) {
         iElement.bind('error', function() {
-          angular.element(this).attr("src", iAttrs.fallbackSrc);
+          angular.element(this).attr('style', 'display:none');
         });
       }
     }
