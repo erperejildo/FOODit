@@ -17,7 +17,7 @@ To compile the app run `grunt build --force` and open the `dist` folder.
 
 ## Online project
 
-Visit http://rodriguezdaniel.com/foodit
+Visit http://rodriguezdaniel.com/apps/foodit
  <p>
  
 Tested in Chrome, Firefox, Explorer and Opera.
